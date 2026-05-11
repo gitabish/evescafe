@@ -24,7 +24,7 @@ export default function Navbar({ scrolled, setIsMenuOpen }: { scrolled: boolean;
           </div>
           <div className="text-2xl tracking-tight font-display text-gray-800 flex flex-col leading-none">
             <span className="text-brand text-stroke-[1px] stroke-black" style={{ WebkitTextStroke: '1px black' }}>Eve's</span>
-            <span className="-mt-1 text-black">Cafe</span>
+            <span className="-mt-1 text-black">Coffee</span>
           </div>
         </Link>
 

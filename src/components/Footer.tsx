@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="w-6 h-6 bg-brand rounded-full flex items-center justify-center">
               <span className="text-black font-bold text-xs">E</span>
             </div>
-            <span className="font-display text-xl tracking-tight">Eve's Cafe</span>
+            <span className="font-display text-xl tracking-tight">Eve's Coffee</span>
           </div>
           <p className="text-gray-400 text-sm max-w-xs text-center md:text-left">
             Crafting premium morning experiences through ethically sourced beans and artisan bakes.
@@ -23,7 +23,7 @@ export default function Footer() {
         </div>
 
         <div className="text-gray-400 text-sm">
-          © 2024 Eve's Coffee & Bakery. Design by NeoStudio.
+          © 2026 Eve's Coffee. Design by NeoStudio.
         </div>
       </div>
     </footer>

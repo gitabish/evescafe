@@ -37,14 +37,13 @@ export default function Home() {
             className="text-left"
           >
             <span className="inline-block px-4 py-1 bg-brand-light border-2 border-black rounded-full text-xs font-bold mb-6 shadow-hard-sm">
-              BOUTIQUE COFFEE & BAKERY
+              WELCOME TO 
             </span>
             <h1 className="font-display text-5xl md:text-8xl mb-6 tracking-tighter leading-[0.9]">
-              THE <span className="text-brand">EVE'S</span> <br />EXPERIENCE
+              THE <span className="text-brand">EVE'S</span> <br />COFFEE
             </h1>
             <p className="text-gray-600 text-lg md:text-xl max-w-lg mb-10 font-medium">
-              A 3D sanctuary for specialty coffee lovers. We combine high-end brewing with an immersive spatial vibe. 
-              Fresh beans, artisanal bakes, and a community like no other.
+              A sanctuary for coffee lovers, gamers, and music souls. Experience premium brews, immersive gaming vibes, chill beats, and a space where every sip feels like an escape.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <motion.a 
@@ -70,30 +69,34 @@ export default function Home() {
             {/* The Illustration Container */}
             <motion.div 
               style={{ y: yParallax }}
-              animate={{ 
-                y: [0, -10, 0],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="relative w-full max-w-lg z-20 group"
             >
-              {/* Main Cafe Building Image */}
-              <div className="relative rounded-3xl overflow-hidden border-4 border-black shadow-[20px_20px_0px_0px_#28D156] transition-transform duration-500 group-hover:scale-[1.02]">
-                <img 
-                  src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200" 
-                  alt="Eve's Boutique Cafe" 
-                  className="w-full h-auto object-cover grayscale brightness-90 contrast-125 group-hover:grayscale-0 transition-all duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-brand/10 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 to-transparent pointer-events-none" />
-              </div>
-
-              {/* Logo Badge */}
-              <motion.div 
-                style={{ y: yBadge, rotate: rotateParallax }}
-                className="absolute -top-6 -right-6 bg-brand text-white px-8 py-3 rounded-full font-display text-4xl border-2 border-black shadow-hard animate-pulse-subtle z-40"
+              {/* Floating Animation Layer */}
+              <motion.div
+                animate={{ 
+                  y: [0, -12, 0],
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                EVE'S
+                {/* Main Cafe Building Image */}
+                <div className="relative rounded-3xl overflow-hidden border-4 border-black shadow-[20px_20px_0px_0px_#28D156] transition-transform duration-500 group-hover:scale-[1.02]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200" 
+                    alt="Eve's Coffee" 
+                    className="w-full h-auto object-cover grayscale brightness-90 contrast-125 group-hover:grayscale-0 transition-all duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-brand/10 mix-blend-multiply" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 to-transparent pointer-events-none" />
+                </div>
+
+                {/* Logo Badge */}
+                <motion.div 
+                  style={{ y: yBadge, rotate: rotateParallax }}
+                  className="absolute -top-6 -right-6 bg-brand text-white px-8 py-3 rounded-full font-display text-4xl border-2 border-black shadow-hard animate-pulse-subtle z-40"
+                >
+                  EVE'S COFFEE
+                </motion.div>
               </motion.div>
 
               {/* Floating Decorative Elements */}
@@ -363,7 +366,14 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-1">Our Location</h3>
-                    <p className="text-gray-500 font-medium">123 Espresso Avenue, Coffee District, NY 10001</p>
+                    <a 
+                      href="https://maps.app.goo.gl/sMpuXuBgKLnPi3Ne7" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-gray-500 font-medium hover:text-brand transition-colors"
+                    >
+                      Pulikkada Junction, Kelamangalam - Alappuzha Rd, Kidangamparamp, Alappuzha, Kerala 688013
+                    </a>
                   </div>
                 </div>
                 
@@ -373,7 +383,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-1">Opening Hours</h3>
-                    <p className="text-gray-500 font-medium">Mon - Fri: 07:00 - 19:00 <br />Sat - Sun: 08:30 - 20:00</p>
+                    <p className="text-gray-500 font-medium">Mon - Sun: 08:00 - 22:00</p>
                   </div>
                 </div>
 
@@ -384,8 +394,8 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl font-bold mb-1">Online Presence</h3>
                     <div className="flex flex-col gap-1">
-                      <a href="mailto:hello@evescafe.com" className="text-gray-500 font-bold hover:text-brand transition-colors">hello@evescafe.com</a>
-                      <a href="tel:+1234567890" className="text-gray-500 font-bold hover:text-brand transition-colors">+1 (234) 567-890</a>
+                      <a href="mailto:hello@evescoffee.com" className="text-gray-500 font-bold hover:text-brand transition-colors"></a>
+                      <a href="tel:09645263333" className="text-gray-500 font-bold hover:text-brand transition-colors">09645263333</a>
                     </div>
                   </div>
                 </div>
