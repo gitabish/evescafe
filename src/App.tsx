@@ -22,12 +22,16 @@ function ScrollToTop() {
 
   useEffect(() => {
     if (hash) {
-      const element = document.getElementById(hash.replace('#', ''));
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        // Small delay to ensure layout is complete and IntersectionObservers are primed
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       }
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     }
   }, [pathname, hash]);
 
@@ -68,6 +72,10 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
