@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Titan+One&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Titan One", cursive;
+  
+  --color-mint: #E6F9EA;
+  --color-brand: #28D156;
+  --color-brand-light: #9dfaa8;
+}
+
+@layer base {
+  body {
+    @apply bg-mint text-gray-900 antialiased selection:bg-brand selection:text-black overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .shadow-hard {
+    box-shadow: 4px 4px 0px 0px #000000;
+  }
+  
+  .shadow-hard-sm {
+    box-shadow: 2px 2px 0px 0px #000000;
+  }
+
+  .text-shadow-hard {
+    text-shadow: 6px 6px 0px #000000;
+  }
+
+  .text-stroke-3 {
+    -webkit-text-stroke: 3px black;
+    paint-order: stroke fill;
+  }
+
+  @media (max-width: 768px) {
+    .text-shadow-hard {
+      text-shadow: 3px 3px 0px #000000;
+    }
+    .text-stroke-3 {
+      -webkit-text-stroke: 1.5px black;
+    }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E6F9EA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 4px;
+}
