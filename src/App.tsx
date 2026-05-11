@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll } from 'motion/react';
 import { 
   Menu, 
   X
@@ -34,6 +34,35 @@ function ScrollToTop() {
   return null;
 }
 
+// ScrollReveal initialization component
+function InitReveal() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      },
+      { 
+        threshold: 0.1
+      }
+    );
+
+    const elements = document.querySelectorAll('.reveal');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -54,64 +83,78 @@ export default function App() {
     { name: 'Contact', href: '/#contact' },
   ];
 
+  const { scrollYProgress } = useScroll();
+
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen">
+      <InitReveal />
+      <div className="min-h-screen flex flex-col">
+        <motion.div 
+          className="fixed top-0 left-0 right-0 h-1 bg-brand z-[100] origin-left"
+          style={{ scaleX: scrollYProgress }}
+        />
         <Navbar scrolled={scrolled} setIsMenuOpen={setIsMenuOpen} />
-
+        
         {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 bg-mint z-[60] flex flex-col items-center justify-center gap-8 p-8"
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+              className="fixed inset-0 bg-white z-[60] p-10 flex flex-col justify-between md:hidden overflow-hidden"
             >
-              <button 
-                onClick={() => setIsMenuOpen(false)}
-                className="absolute top-6 right-6 p-2"
-              >
-                <X className="w-8 h-8 text-black" />
-              </button>
-              {navLinks.map((link) => {
-                const isExternal = link.href.includes('#');
-                if (isExternal) {
+              <div className="flex justify-between items-center">
+                <span className="font-display text-2xl uppercase font-bold tracking-[-0.05em]">EVE'S</span>
+                <motion.button 
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center hover:bg-brand transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </motion.button>
+              </div>
+              
+              <div className="flex flex-col gap-6 mt-12">
+                {navLinks.map((link, idx) => {
                   return (
-                    <a 
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.08, ease: [0.23, 1, 0.32, 1] }}
                       key={link.name}
-                      href={link.href} 
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-3xl font-display hover:text-brand transition-colors"
                     >
-                      {link.name}
-                    </a>
+                      <Link 
+                        to={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="text-5xl sm:text-6xl font-display font-black tracking-[-0.05em] hover:text-brand transition-colors uppercase leading-none block"
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
                   );
-                }
-                return (
-                  <Link 
-                    key={link.name}
-                    to={link.href} 
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-3xl font-display hover:text-brand transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-              <a 
-                href="/#contact" 
-                onClick={() => setIsMenuOpen(false)}
-                className="mt-4 px-8 py-3 bg-brand border-2 border-black rounded-full font-bold shadow-hard hover:shadow-none translate-x-[2px] translate-y-[2px]"
-              >
-                BOOK A TABLE
-              </a>
+                })}
+              </div>
+
+              <div className="border-t-2 border-black pt-10 mt-12">
+                <p className="text-[10px] font-bold font-mono tracking-widest text-gray-400 mb-6 uppercase">LOCATION / KERALA</p>
+                <div className="flex flex-col gap-4">
+                   <a href="#" className="font-bold text-lg hover:text-brand transition-colors">INSTAGRAM</a>
+                   <a href="#" className="font-bold text-lg hover:text-brand transition-colors">MAPS</a>
+                </div>
+              </div>
+
+              {/* Background large text */}
+              <div className="absolute -bottom-10 -right-10 opacity-[0.03] select-none pointer-events-none">
+                 <h4 className="font-display text-[40vw] leading-none font-black">EVE</h4>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <main>
+        <main className="flex-grow pt-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/menu" element={<MenuPage />} />

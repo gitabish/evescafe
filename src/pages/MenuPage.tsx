@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Coffee, Star } from 'lucide-react';
+import { Coffee, Star, ArrowUpRight } from 'lucide-react';
 
 const menuData = [
   // Hot Drinks
@@ -66,69 +66,93 @@ export default function MenuPage() {
     : menuData.filter(item => item.category === activeCategory);
 
   return (
-    <div className="pt-32 pb-24 bg-mint min-h-screen">
+    <div className="pt-40 md:pt-32 pb-40 bg-white min-h-screen font-sans">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
-        >
-          <div className="max-w-xl text-left">
-            <h1 className="text-6xl md:text-8xl font-display tracking-tighter mb-4">OUR MENU</h1>
-            <p className="text-xl text-gray-600 font-medium">Explore our curated selection of specialty brews and unique treats.</p>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12 reveal">
+          <div className="max-w-2xl text-left reveal" style={{ transitionDelay: '0.1s' }}>
+            <div className="flex items-center gap-2 mb-6 reveal" style={{ transitionDelay: '0.2s' }}>
+              <span className="w-8 h-[2px] bg-black" />
+              <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-black/50">CURATED SELECTION</span>
+            </div>
+            <h1 className="text-6xl md:text-[clamp(4rem,10vw,8rem)] font-display tracking-[-0.05em] mb-8 leading-[0.8] uppercase reveal" style={{ transitionDelay: '0.3s' }}>
+              THE <span className="text-brand">MENU</span>
+            </h1>
+            <p className="text-2xl text-gray-500 font-medium leading-relaxed tracking-tight reveal" style={{ transitionDelay: '0.4s' }}>
+              Explore our laboratory of specialty brews, handmade bakery items, and unique treats.
+            </p>
           </div>
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-3">
-            {categories.map((cat) => (
+          <div className="flex flex-wrap gap-4 pb-4 reveal" style={{ transitionDelay: '0.5s' }}>
+            {categories.map((cat, i) => (
               <button 
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 border-2 border-black rounded-full font-bold transition-all ${
-                  activeCategory === cat ? 'bg-brand text-white shadow-hard-sm -translate-y-1' : 'bg-white hover:bg-brand/10'
+                className={`px-8 py-3 border-2 border-black rounded-full font-bold text-sm tracking-tight transition-all duration-300 reveal ${
+                  activeCategory === cat 
+                    ? 'bg-black text-white shadow-hard-sm -translate-y-1' 
+                    : 'bg-white hover:bg-brand/10 hover:shadow-hard-sm hover:-translate-y-0.5'
                 }`}
+                style={{ transitionDelay: `${0.6 + i * 0.05}s` }}
               >
                 {cat}
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredMenu.map((item) => (
-              <motion.div 
-                key={item.name}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
-                className="bg-white rounded-2xl border-2 border-black p-6 shadow-hard group"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="bg-brand-light p-2 border border-black rounded-lg group-hover:rotate-6 transition-transform">
-                    <Coffee className="w-5 h-5" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {filteredMenu.map((item, idx) => (
+            <div 
+              key={item.name}
+              className="bg-white rounded-[2rem] border-2 border-black p-8 shadow-hard transition-all duration-500 group hover:-translate-y-2 hover:shadow-hard-lg reveal"
+              style={{ transitionDelay: `${(idx % 8) * 0.05}s` }}
+            >
+                <div className="flex justify-between items-start mb-8">
+                  <div className="bg-mint p-3 border-2 border-black rounded-xl shadow-hard-sm transition-transform hover:rotate-12">
+                    <Coffee className="w-6 h-6 text-brand" />
                   </div>
-                  <span className="font-display text-lg text-brand">{item.price}</span>
+                  <div className="flex flex-col items-end">
+                    <span className="font-display text-xl text-black tracking-tight">{item.price}</span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-1 tracking-tight">{item.name}</h3>
-                <p className="text-gray-500 text-sm font-medium">{item.desc}</p>
-              </motion.div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold tracking-tight group-hover:text-brand transition-colors uppercase leading-[0.9]">{item.name}</h3>
+                  <p className="text-gray-500 text-sm font-medium leading-relaxed tracking-tight">{item.desc}</p>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-black/5 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
+                  <span className="text-[10px] font-bold font-mono tracking-widest">{item.category.toUpperCase()}</span>
+                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300" />
+                </div>
+              </div>
             ))}
-          </AnimatePresence>
         </div>
 
         {/* Highlights Section */}
-        <div className="mt-24">
-          <h3 className="text-3xl font-display mb-10 tracking-tight flex items-center gap-4">
-            <Star className="text-brand fill-brand" /> HIGHLIGHTS
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {highlights.map((h, i) => (
-              <div key={i} className="bg-white border-2 border-black rounded-xl p-4 shadow-hard-sm font-bold text-xs uppercase tracking-tight flex items-center justify-center text-center">
-                {h}
+        <div className="mt-40 p-1 bg-black rounded-[2.5rem] shadow-hard-lg overflow-hidden">
+          <div className="bg-mint p-12 md:p-20 rounded-[calc(2.5rem-0.25rem)] reveal" style={{ transitionDelay: '0.1s' }}>
+            <div className="flex flex-col md:flex-row justify-between items-start mb-16 gap-8 reveal" style={{ transitionDelay: '0.2s' }}>
+              <div className="max-w-xl">
+                <h3 className="text-4xl md:text-6xl font-display mb-6 tracking-[-0.05em] flex items-center gap-6 uppercase reveal" style={{ transitionDelay: '0.3s' }}>
+                  <Star className="text-brand fill-brand w-10 h-10" /> TOP PICKS
+                </h3>
+                <p className="text-xl text-gray-600 font-medium tracking-tight reveal" style={{ transitionDelay: '0.4s' }}>The most celebrated items from our kitchen, voted by our community.</p>
               </div>
-            ))}
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {highlights.map((h, i) => (
+                <div 
+                  key={i} 
+                  className="bg-white border-2 border-black rounded-2xl p-4 md:p-6 shadow-hard-sm group min-h-[80px] flex items-center overflow-hidden transition-all hover:scale-105 hover:rotate-1 reveal"
+                  style={{ transitionDelay: `${0.5 + (i % 8) * 0.05}s` }}
+                >
+                  <span className="font-bold text-[10px] md:text-sm uppercase tracking-tight leading-tight block group-hover:text-brand transition-colors break-words w-full">
+                    {h}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

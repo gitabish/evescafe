@@ -1,77 +1,77 @@
 import { Coffee, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { motion } from 'motion/react';
 
 export default function Navbar({ scrolled, setIsMenuOpen }: { scrolled: boolean; setIsMenuOpen: (val: boolean) => void }) {
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Menu', href: '/menu' },
-    { name: 'About', href: '/#about' },
-    { name: 'Experience', href: '/#experience' },
-    { name: 'Contact', href: '/#contact' },
+    { name: 'HOME', href: '/' },
+    { name: 'ABOUT', href: '/#about' },
+    { name: 'MENU', href: '/menu' },
+    { name: 'EXPERIENCE', href: '/#experience' },
+    { name: 'CONTACT', href: '/#contact' },
   ];
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md border-b border-black py-3' : 'bg-white/50 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-50 px-6 transition-all duration-700 pointer-events-none ${
+        scrolled ? 'py-4' : 'py-4 sm:py-8'
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-1 group">
-          <div className="relative w-8 h-8 mr-1 transition-transform group-hover:rotate-12">
-            <Coffee className="text-black w-full h-full fill-brand" />
-          </div>
-          <div className="text-2xl tracking-tight font-display text-gray-800 flex flex-col leading-none">
-            <span className="text-brand text-stroke-[1px] stroke-black" style={{ WebkitTextStroke: '1px black' }}>Eve's</span>
-            <span className="-mt-1 text-black">Coffee</span>
-          </div>
-        </Link>
+      <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+        <div className={`flex items-center justify-between w-full bg-white border-2 border-black rounded-full px-8 py-3 transition-all duration-500 ${
+          scrolled ? 'shadow-hard-sm backdrop-blur-md bg-white/95' : 'shadow-none'
+        }`}>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group reveal" style={{ transitionDelay: '0.1s' }}>
+            <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform shadow-hard-sm">
+              <Coffee className="w-6 h-6 text-brand" />
+            </div>
+            <span className="text-lg sm:text-2xl font-display uppercase tracking-[-0.05em] group-hover:text-brand transition-colors block">
+              EVE'S <span className="font-light">COFFEE</span>
+            </span>
+          </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 font-medium text-sm">
-          {navLinks.map((link) => {
-            const isExternal = link.href.includes('#');
-            if (isExternal) {
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-10 reveal" style={{ transitionDelay: '0.2s' }}>
+            {navLinks.map((link, i) => {
+              const isExternal = link.href.includes('#');
               return (
-                <a 
+                <Link 
                   key={link.name}
-                  href={link.href} 
-                  className="transition-all hover:text-brand"
+                  to={link.href}
+                  className="text-[10px] font-bold tracking-[0.3em] transition-all relative group text-black hover:text-brand reveal"
+                  style={{ transitionDelay: `${0.3 + i * 0.05}s` }}
                 >
                   {link.name}
-                </a>
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand transition-all group-hover:w-full" />
+                </Link>
               );
-            }
-            return (
-              <Link 
-                key={link.name}
-                to={link.href} 
-                className={`transition-all hover:text-brand ${
-                  link.name === 'Home' ? 'px-5 py-2 bg-brand border-2 border-black rounded-full shadow-hard-sm hover:translate-y-[-2px]' : ''
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* CTA Button */}
-        <a 
-          href="#" 
-          className="hidden md:flex items-center gap-3 bg-brand border-2 border-black rounded-full px-1 pl-1 py-1 pr-6 shadow-hard hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-200 group"
-        >
-          <div className="bg-white border-2 border-black rounded-full p-1.5 group-hover:rotate-45 transition-transform duration-300">
-            <ArrowUpRight className="w-4 h-4 text-black stroke-[2.5]" />
+            })}
           </div>
-          <span className="font-bold text-xs tracking-wide">BOOK A TABLE</span>
-        </a>
 
-        {/* Mobile Menu Toggle */}
-        <button onClick={() => setIsMenuOpen(true)} className="md:hidden p-2">
-          <MenuIcon className="w-8 h-8 text-black" />
-        </button>
+          {/* CTA & Mobile Toggle */}
+          <div className="flex items-center gap-6 reveal" style={{ transitionDelay: '0.3s' }}>
+            <a 
+              href="tel:09645263333"
+              className="hidden lg:flex items-center gap-3 bg-brand text-black px-6 py-2.5 border-2 border-black rounded-full font-bold text-[10px] tracking-[0.1em] shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all reveal"
+              style={{ transitionDelay: '0.4s' }}
+            >
+              BOOK A TABLE
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+
+            <button 
+              onClick={() => setIsMenuOpen(true)}
+              className="md:hidden flex flex-col items-center justify-center gap-1.5 w-10 h-10 group reveal"
+              style={{ transitionDelay: '0.4s' }}
+            >
+              <div className="w-6 h-[2px] bg-black transition-all group-hover:w-4" />
+              <div className="w-6 h-[2px] bg-black transition-all" />
+              <div className="w-6 h-[2px] bg-black transition-all group-hover:w-4" />
+            </button>
+          </div>
+        </div>
       </div>
     </nav>
   );
