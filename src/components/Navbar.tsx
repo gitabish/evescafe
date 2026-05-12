@@ -28,7 +28,7 @@ export default function Navbar({ scrolled, setIsMenuOpen }: { scrolled: boolean;
               <Coffee className="w-6 h-6 text-brand" />
             </div>
             <span className="text-lg sm:text-2xl font-display uppercase tracking-[-0.05em] group-hover:text-brand transition-colors block">
-              SAVOUR <span className="font-light">STREET CAFE</span>
+              KYNORAH
             </span>
           </Link>
 

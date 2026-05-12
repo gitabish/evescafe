@@ -46,7 +46,7 @@ export default function Home() {
                 transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
                 className="block"
               >
-                SAVOUR <span className="text-brand">STREET</span>
+                KYNORAH
               </motion.span>
               <motion.span 
                 initial={{ y: "110%" }}
@@ -55,12 +55,12 @@ export default function Home() {
                 className="block text-stroke-3 text-white"
                 style={{ WebkitTextStroke: '3px black' }}
               >
-                CAFE
+                EXPERIENCE
               </motion.span>
             </h1>
 
             <p className="text-gray-500 text-lg md:text-xl max-w-lg mb-12 font-medium leading-relaxed tracking-tight reveal" style={{ transitionDelay: '0.4s' }}>
-              A sanctuary for coffee lovers, gamers, and music souls. Experience premium brews, immersive gaming vibes, and chill pulses in a space where every sip is an escape.
+              A place to belong. A sanctuary for coffee lovers, gamers, and music souls. Experience premium brews, immersive gaming vibes, and chill pulses.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 reveal" style={{ transitionDelay: '0.5s' }}>
@@ -123,7 +123,7 @@ export default function Home() {
                   <div className="relative rounded-[2rem] overflow-hidden border-2 border-black bg-brand/5">
                     <img 
                       src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200" 
-                      alt="Savour Street Cafe" 
+                      alt="Kynorah" 
                       className="w-full h-auto aspect-[4/5] object-cover grayscale brightness-90 contrast-125 group-hover:grayscale-0 transition-all duration-1000"
                       referrerPolicy="no-referrer"
                     />
@@ -137,7 +137,7 @@ export default function Home() {
                   style={{ y: yBadge, rotate: rotateParallax }}
                   className="absolute -top-10 -right-10 bg-brand text-black px-10 py-5 rounded-full font-display text-4xl border-2 border-black shadow-hard-lg z-40"
                 >
-                  SAVOUR
+                  KYNORAH
                 </motion.div>
                 
                 {/* Micro Metadata labels */}
@@ -157,7 +157,7 @@ export default function Home() {
 
             {/* Background cinematic text */}
             <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] select-none pointer-events-none overflow-hidden">
-               <h4 className="font-display text-[30vw] text-black leading-none font-black translate-y-20">SAVOUR</h4>
+               <h4 className="font-display text-[30vw] text-black leading-none font-black translate-y-20">KYNORAH</h4>
             </div>
           </div>
         </div>
@@ -348,7 +348,7 @@ export default function Home() {
           <div className="flex flex-col items-center mb-20 reveal">
             <span className="text-brand font-mono text-xs font-bold tracking-[0.5em] mb-4 uppercase reveal" style={{ transitionDelay: '0.1s' }}>TESTIMONIALS</span>
               <h2 className="text-6xl md:text-8xl font-display tracking-tight uppercase leading-none reveal" style={{ transitionDelay: '0.2s' }}>
-                VOICES OF <span className="text-brand">SAVOUR</span>
+                VOICES OF <span className="text-brand">KYNORAH</span>
               </h2>
           </div>
           

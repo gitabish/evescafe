@@ -10,6 +10,7 @@ import {
   Menu, 
   X
 } from 'lucide-react';
+import { ReactLenis } from 'lenis/react';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -97,11 +98,12 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <InitReveal />
-      <div className="min-h-screen flex flex-col">
-        <motion.div 
-          className="fixed top-0 left-0 right-0 h-1 bg-brand z-[100] origin-left"
-          style={{ scaleX: scrollYProgress }}
-        />
+      <ReactLenis root>
+        <div className="min-h-screen flex flex-col">
+          <motion.div 
+            className="fixed top-0 left-0 right-0 h-1 bg-brand z-[100] origin-left"
+            style={{ scaleX: scrollYProgress }}
+          />
         <Navbar scrolled={scrolled} setIsMenuOpen={setIsMenuOpen} />
         
         {/* Mobile Menu Overlay */}
@@ -115,7 +117,7 @@ export default function App() {
               className="fixed inset-0 bg-white z-[60] p-10 flex flex-col justify-between md:hidden overflow-hidden"
             >
               <div className="flex justify-between items-center">
-                <span className="font-display text-2xl uppercase font-bold tracking-[-0.05em]">SAVOUR STREET CAFE</span>
+                <span className="font-display text-2xl uppercase font-bold tracking-[-0.05em]">KYNORAH</span>
                 <motion.button 
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsMenuOpen(false)}
@@ -156,7 +158,7 @@ export default function App() {
 
               {/* Background large text */}
               <div className="absolute -bottom-10 -right-10 opacity-[0.03] select-none pointer-events-none">
-                 <h4 className="font-display text-[40vw] leading-none font-black text-center">SAVOUR</h4>
+                 <h4 className="font-display text-[40vw] leading-none font-black text-center">KYNORAH</h4>
               </div>
             </motion.div>
           )}
@@ -170,7 +172,8 @@ export default function App() {
         </main>
 
         <Footer />
-      </div>
+        </div>
+      </ReactLenis>
     </Router>
   );
 }
