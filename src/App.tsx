@@ -115,7 +115,7 @@ export default function App() {
               className="fixed inset-0 bg-white z-[60] p-10 flex flex-col justify-between md:hidden overflow-hidden"
             >
               <div className="flex justify-between items-center">
-                <span className="font-display text-2xl uppercase font-bold tracking-[-0.05em]">EVE'S</span>
+                <span className="font-display text-2xl uppercase font-bold tracking-[-0.05em]">SAVOUR STREET CAFE</span>
                 <motion.button 
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsMenuOpen(false)}
@@ -156,7 +156,7 @@ export default function App() {
 
               {/* Background large text */}
               <div className="absolute -bottom-10 -right-10 opacity-[0.03] select-none pointer-events-none">
-                 <h4 className="font-display text-[40vw] leading-none font-black">EVE</h4>
+                 <h4 className="font-display text-[40vw] leading-none font-black text-center">SAVOUR</h4>
               </div>
             </motion.div>
           )}

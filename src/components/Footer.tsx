@@ -13,7 +13,7 @@ export default function Footer() {
                 <Coffee className="w-10 h-10 text-black fill-black" />
               </div>
               <span className="text-4xl font-display font-black tracking-[-0.05em] leading-none uppercase">
-                EVE'S <br /><span className="text-brand">COFFEE</span>
+                SAVOUR <br /><span className="text-brand">STREET CAFE</span>
               </span>
             </div>
             
@@ -22,11 +22,12 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-4 reveal" style={{ transitionDelay: '0.4s' }}>
-              {['INSTAGRAM', 'TWITTER', 'FACEBOOK'].map((social, i) => (
-                <a key={social} href="#" className="text-[10px] font-bold tracking-[0.2em] border-2 border-white/10 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all reveal" style={{ transitionDelay: `${0.5 + i * 0.1}s` }}>
-                  {social}
-                </a>
-              ))}
+              <a href="https://instagram.com/savourstreet.cafe" target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold tracking-[0.2em] border-2 border-white/10 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all reveal" style={{ transitionDelay: '0.5s' }}>
+                INSTAGRAM
+              </a>
+              <a href="mailto:cafesavourstreet@gmail.com" className="text-[10px] font-bold tracking-[0.2em] border-2 border-white/10 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all reveal" style={{ transitionDelay: '0.6s' }}>
+                EMAIL
+              </a>
             </div>
           </div>
 
@@ -65,7 +66,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-32 pt-12 border-t-2 border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 reveal" style={{ transitionDelay: '0.8s' }}>
           <div className="flex items-center gap-4 text-white/20 font-mono text-[10px] font-bold uppercase tracking-widest">
-            <span>© 2026 EVE'S COFFEE</span>
+            <span>© 2026 SAVOUR STREET CAFE</span>
             <span className="w-1 h-1 bg-white/20 rounded-full" />
             <span>ALL RIGHTS RESERVED</span>
           </div>
@@ -79,7 +80,7 @@ export default function Footer() {
 
       {/* Decorative large background text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.02] select-none pointer-events-none">
-         <h4 className="font-display text-[50vw] leading-none font-black">EVE'S</h4>
+         <h4 className="font-display text-[30vw] leading-none font-black text-center">SAVOUR STREET</h4>
       </div>
     </footer>
   );

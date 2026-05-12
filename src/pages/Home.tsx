@@ -35,7 +35,7 @@ export default function Home() {
             <div className="flex items-center gap-2 mb-8 reveal" style={{ transitionDelay: '0.2s' }}>
               <span className="w-10 h-[2px] bg-black" />
               <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-black/50">
-                ESTABLISHED 2026
+                ESTABLISHED 2021
               </span>
             </div>
             
@@ -46,7 +46,7 @@ export default function Home() {
                 transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
                 className="block"
               >
-                THE <span className="text-brand">EVE'S</span>
+                SAVOUR <span className="text-brand">STREET</span>
               </motion.span>
               <motion.span 
                 initial={{ y: "110%" }}
@@ -55,7 +55,7 @@ export default function Home() {
                 className="block text-stroke-3 text-white"
                 style={{ WebkitTextStroke: '3px black' }}
               >
-                COFFEE
+                CAFE
               </motion.span>
             </h1>
 
@@ -67,7 +67,7 @@ export default function Home() {
               <motion.a 
                 whileHover={{ scale: 1.02, x: 5 }}
                 whileTap={{ scale: 0.97 }}
-                href="tel:09645263333"
+                href="tel:+917736038082"
                 className="group relative flex items-center justify-center gap-4 bg-black text-white rounded-px px-10 py-5 transition-all duration-300 shadow-hard-lg"
               >
                 <span className="font-bold text-lg tracking-tight">BOOK A TABLE</span>
@@ -88,12 +88,12 @@ export default function Home() {
             <div className="mt-16 flex items-center gap-8 border-t border-black/10 pt-8 reveal" style={{ transitionDelay: '0.6s' }}>
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase font-bold text-black/40 tracking-widest mb-1">LOCATION</span>
-                <span className="text-sm font-bold">ALAPPUZHA, KERALA</span>
+                <span className="text-sm font-bold">KUMARAPURAM, AXIS BANK</span>
               </div>
               <div className="w-[1px] h-10 bg-black/10" />
               <div className="flex flex-col">
-                <span className="text-[10px] uppercase font-bold text-black/40 tracking-widest mb-1">OPEN DAILY</span>
-                <span className="text-sm font-bold">08:00 — 22:00</span>
+                <span className="text-[10px] uppercase font-bold text-black/40 tracking-widest mb-1">RATING</span>
+                <span className="text-sm font-bold">4.4 ★ (659 REVIEWS)</span>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function Home() {
                   <div className="relative rounded-[2rem] overflow-hidden border-2 border-black bg-brand/5">
                     <img 
                       src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200" 
-                      alt="Eve's Coffee" 
+                      alt="Savour Street Cafe" 
                       className="w-full h-auto aspect-[4/5] object-cover grayscale brightness-90 contrast-125 group-hover:grayscale-0 transition-all duration-1000"
                       referrerPolicy="no-referrer"
                     />
@@ -137,7 +137,7 @@ export default function Home() {
                   style={{ y: yBadge, rotate: rotateParallax }}
                   className="absolute -top-10 -right-10 bg-brand text-black px-10 py-5 rounded-full font-display text-4xl border-2 border-black shadow-hard-lg z-40"
                 >
-                  EVE'S
+                  SAVOUR
                 </motion.div>
                 
                 {/* Micro Metadata labels */}
@@ -157,7 +157,7 @@ export default function Home() {
 
             {/* Background cinematic text */}
             <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] select-none pointer-events-none overflow-hidden">
-               <h4 className="font-display text-[30vw] text-black leading-none font-black translate-y-20">EVE'S</h4>
+               <h4 className="font-display text-[30vw] text-black leading-none font-black translate-y-20">SAVOUR</h4>
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function Home() {
               <div className="absolute bottom-12 left-12 z-10 text-white">
                 <span className="bg-brand text-black font-bold uppercase tracking-[0.2em] text-[10px] px-4 py-1.5 rounded-full mb-6 inline-block">OUR STORY</span>
                 <h3 className="text-4xl md:text-6xl font-display mb-4 leading-none tracking-[-0.05em]">BREWED WITH <br />PASSION</h3>
-                <p className="text-white/60 max-w-sm font-medium text-lg leading-relaxed tracking-tight">Since 2012, we've been on a mission to bring rare single-origin roasts to your morning ritual.</p>
+                <p className="text-white/60 max-w-sm font-medium text-lg leading-relaxed tracking-tight">Since 2021, we've been on a mission to bring rare single-origin roasts to your morning ritual.</p>
               </div>
             </div>
 
@@ -347,9 +347,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="flex flex-col items-center mb-20 reveal">
             <span className="text-brand font-mono text-xs font-bold tracking-[0.5em] mb-4 uppercase reveal" style={{ transitionDelay: '0.1s' }}>TESTIMONIALS</span>
-            <h2 className="text-6xl md:text-8xl font-display tracking-tight uppercase leading-none reveal" style={{ transitionDelay: '0.2s' }}>
-              VOICES OF <span className="text-brand">EVE'S</span>
-            </h2>
+              <h2 className="text-6xl md:text-8xl font-display tracking-tight uppercase leading-none reveal" style={{ transitionDelay: '0.2s' }}>
+                VOICES OF <span className="text-brand">SAVOUR</span>
+              </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -443,7 +443,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-500 font-medium hover:text-brand transition-colors text-lg leading-snug block"
                     >
-                      Pulikkada Junction, Kelamangalam <br /> Alappuzha, Kerala 688013
+                      Kumarapuram, near Axis Bank <br /> Kerala
                     </a>
                   </div>
                 </div>
@@ -465,7 +465,7 @@ export default function Home() {
                   <div className="text-left">
                     <h3 className="text-2xl font-bold mb-2 uppercase tracking-tight">ONLINE PRESENCE</h3>
                     <div className="flex flex-col gap-2">
-                       <a href="tel:09645263333" className="text-gray-500 font-bold hover:text-brand transition-colors text-xl tracking-tight">09645263333</a>
+                       <a href="tel:+917736038082" className="text-gray-500 font-bold hover:text-brand transition-colors text-xl tracking-tight">+91 77360 38082</a>
                     </div>
                   </div>
                 </div>
@@ -473,7 +473,7 @@ export default function Home() {
 
               <div className="flex gap-6 items-center reveal" style={{ transitionDelay: '1s' }}>
                 <span className="text-[10px] font-bold text-black/30 font-mono uppercase tracking-[0.25em]">SOCIALLY ACTIVE</span>
-                <a href="#" className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-hard group">
+                <a href="https://instagram.com/savourstreet.cafe" target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-hard group">
                   <Instagram className="w-8 h-8 group-hover:rotate-12 transition-transform" />
                 </a>
               </div>
