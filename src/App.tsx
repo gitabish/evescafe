@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll } from 'motion/react';
 import { 
   Menu, 
   X
 } from 'lucide-react';
-import { ReactLenis } from 'lenis/react';
+import Lenis from 'lenis';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -71,8 +71,27 @@ function InitReveal() {
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Initialize Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    lenisRef.current = lenis;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
@@ -81,7 +100,10 @@ export default function App() {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      lenis.destroy();
+    };
   }, []);
 
   const navLinks = [
@@ -98,13 +120,12 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <InitReveal />
-      <ReactLenis root>
-        <div className="min-h-screen flex flex-col">
-          <motion.div 
-            className="fixed top-0 left-0 right-0 h-1 bg-brand z-[100] origin-left"
-            style={{ scaleX: scrollYProgress }}
-          />
-        <Navbar scrolled={scrolled} setIsMenuOpen={setIsMenuOpen} />
+      <div className="min-h-screen flex flex-col">
+        <motion.div 
+          className="fixed top-0 left-0 right-0 h-1 bg-brand z-[100] origin-left"
+          style={{ scaleX: scrollYProgress }}
+        />
+      <Navbar scrolled={scrolled} setIsMenuOpen={setIsMenuOpen} />
         
         {/* Mobile Menu Overlay */}
         <AnimatePresence>
@@ -172,8 +193,7 @@ export default function App() {
         </main>
 
         <Footer />
-        </div>
-      </ReactLenis>
+      </div>
     </Router>
   );
 }
